@@ -14,33 +14,64 @@ public class Main {
         System.out.println("Choose an Operation: +, -, *, /");
         char operator = userInput.next().charAt(0);
 
-        if(operator == '+' || operator == '-' || operator == '*' || operator == '/'){
-            System.out.println("You chose the operator: "+operator);
-        }else{
-            System.out.println("You entered a wrong operator!");
-        }
         // 2. ask the user to enter the first number
+        double  number1, number2;
         System.out.println("Enter the first number");
-        double number1 = userInput.nextDouble();
+        while (true){
+            if(userInput.hasNextDouble()){
+                number1 = userInput.nextDouble();
+                break;
+            }else{
+                System.out.println("Please Enter a correct number");
+                userInput.next();
+            }
+        }
 
         // 3. ask the user to enter the second number
         System.out.println("Enter the second number");
-        double number2 = userInput.nextDouble();
-
-        // TODO: check the operaton entered by the user, then compute result
-
-        if(operator == '+'){
-            double result = number1 + number2;
-            System.out.println(number1 + " + " + number2 + " = " + result);
-        }else if(operator == '-'){
-            double result = number1 - number2;
-            System.out.println(number1 + " - " + number2 + " = " + result);
-        } else if(operator == '/') {
-            double result = number1 / number2;
-            System.out.println(number1 + " / " + number2 + " = " + result);
-        } else if (operator == '*') {
-            double result = number1 * number2;
-            System.out.println(number1 + " * " + number2 + " = " + result);
+        while (true){
+            if(userInput.hasNextDouble()){
+                number2 = userInput.nextDouble();
+                break;
+            }else{
+                System.out.println("Please Enter a correct number");
+                userInput.next();
+            }
         }
+
+        // check the operator entered by the user, then compute result
+        double result;
+
+        switch (operator){
+
+            // performs addition between number1 and number2
+            case '+':
+                result = number1 + number2;
+                System.out.println(number1 + " + " + number2 + " = " + result);
+                break;
+
+            // performs subtraction between numbers
+            case '-':
+                result = number1 - number2;
+                System.out.println(number1 + " - " + number2 + " = " + result);
+                break;
+
+            // performs multiplication between numbers
+            case '*':
+                result = number1 * number2;
+                System.out.println(number1 + " * " + number2 + " = " + result);
+                break;
+
+            // performs division between numbers
+            case '/':
+                result = number1 / number2;
+                System.out.println(number1 + " / " + number2 + " = " + result);
+                break;
+
+            default:
+                System.out.println("You entered an invalid operator!");
+                break;
+        }
+
     }
 }
